@@ -34,7 +34,7 @@ LINUX_USER=ime
 INSTALL_LOCATION=~/Applications
 
 # Defines which package manager/install command/switches for the package installation
-INSTALL_COMMAND=apt-get install -y
+INSTALL_COMMAND='apt-get install -y'
 
 
 
@@ -80,18 +80,18 @@ sudo add-apt-repository -y ppa:kasra-mp/ubuntu-indicator-weather
 
 
 # To get the latest package lists
-echo -e "\n\n######################  Updating Repositories  #####################\n"
+echo -e "\n\n######################  Updating Repositories  #####################"
 echo -e "####################################################################\n"
 sudo apt-get update
 
 # Upgrade to latest package lists
-echo -e "\n\n######################  Packages Upgrade  #####################\n"
+echo -e "\n\n######################  Packages Upgrade  #####################"
 echo -e "###############################################################\n"
 sudo apt-get -y upgrade
 
 
 
-echo -e "\n\n######################  Installation cleanup 01 #####################\n"
+echo -e "\n\n######################  Installation cleanup 01 #####################"
 echo -e "#####################################################################\n"
 sudo apt-get -y autoclean
 sudo apt-get -y clean
@@ -106,41 +106,41 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "-----------------  Installing Essential tools  -----------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing build-essential  #####################\n"
+echo -e "\n\n######################  Installing build-essential  #####################"
 echo -e "#########################################################################\n"
 sudo $INSTALL_COMMAND build-essential
 
-echo -e "\n\n######################  Installing software-properties-common  #####################\n"
+echo -e "\n\n######################  Installing software-properties-common  #####################"
 echo -e "####################################################################################\n"
 sudo $INSTALL_COMMAND software-properties-common
 
-echo -e "\n\n######################  Installing python-software-properties  #####################\n"
+echo -e "\n\n######################  Installing python-software-properties  #####################"
 echo -e "####################################################################################\n"
 sudo $INSTALL_COMMAND python-software-properties
 
-echo -e "\n\n######################  Installing openssh-server & openssh-client  #####################\n"
+echo -e "\n\n######################  Installing openssh-server & openssh-client  #####################"
 echo -e "#########################################################################################\n"
 sudo $INSTALL_COMMAND openssh-server openssh-client
 
-echo -e "\n\n######################  Installing openssl  #####################\n"
+echo -e "\n\n######################  Installing openssl  #####################"
 echo -e "#################################################################\n"
 sudo $INSTALL_COMMAND openssl
 sudo $INSTALL_COMMAND zlib1g zlib1g-dev libpcre3 libpcre3-dev libssl-dev
 
-echo -e "\n\n######################  Installing GIT  ######################\n"
+echo -e "\n\n######################  Installing GIT  ######################"
 echo -e "##############################################################\n"
 sudo $INSTALL_COMMAND git
 
-echo -e "\n\n######################  Installing Curl  ######################\n"
+echo -e "\n\n######################  Installing Curl  ######################"
 echo -e "###############################################################\n"
 sudo $INSTALL_COMMAND curl
 
-echo -e "\n\n######################  Installing python-pip  #####################\n"
+echo -e "\n\n######################  Installing python-pip  #####################"
 echo -e "####################################################################\n"
 sudo $INSTALL_COMMAND python-pip
 pip -V
 
-echo -e "\n\n######################  Installing python3-pip  #####################\n"
+echo -e "\n\n######################  Installing python3-pip  #####################"
 echo -e "#####################################################################\n"
 sudo $INSTALL_COMMAND python3-pip
 pip3 -V
@@ -150,30 +150,30 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "----------------  Installing Multimedia tools  -----------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing ubuntu-restricted-extras  #####################\n"
+echo -e "\n\n######################  Installing ubuntu-restricted-extras  #####################"
 echo -e "##################################################################################\n"
 sudo $INSTALL_COMMAND ubuntu-restricted-extras
 
 
-echo -e "\n\n######################  Installing Microsoft core fonts  #####################\n"
+echo -e "\n\n######################  Installing Microsoft core fonts  #####################"
 echo -e "##############################################################################\n"
 sudo $INSTALL_COMMAND msttcorefonts
 
 
-echo -e "\n\n######################  Installing flashplugin-installer  #####################\n"
+echo -e "\n\n######################  Installing flashplugin-installer  #####################"
 echo -e "###############################################################################\n"
 sudo $INSTALL_COMMAND flashplugin-installer
 
-echo -e "\n\n######################  Installing DVD libdvdread4  #####################\n"
+echo -e "\n\n######################  Installing DVD libdvdread4  #####################"
 echo -e "#########################################################################\n"
 sudo $INSTALL_COMMAND libdvdcss2 libdvdread4 libdvdnav4
 sudo /usr/share/doc/libdvdread4/install-css.sh
 
-echo -e "\n\n######################  Installing VLC Player  #####################\n"
+echo -e "\n\n######################  Installing VLC Player  #####################"
 echo -e "####################################################################\n"
 sudo $INSTALL_COMMAND vlc
 
-echo -e "\n\n######################  Installing SMPlayer  #####################\n"
+echo -e "\n\n######################  Installing SMPlayer  #####################"
 echo -e "##################################################################\n"
 sudo $INSTALL_COMMAND smplayer
 
@@ -183,11 +183,11 @@ sudo $INSTALL_COMMAND smplayer
 echo -e "\n\n----------------------------------------------------------------"
 echo -e "---------------=---  Installing MQTT Tools  --------------------"
 echo -e "----------------------------------------------------------------"
-echo -e "\n\n######################  Installing mosquitto & mosquitto-clients  #####################\n"
+echo -e "\n\n######################  Installing mosquitto & mosquitto-clients  #####################"
 echo -e "#######################################################################################\n"
 sudo $INSTALL_COMMAND mosquitto mosquitto-clients
 
-echo -e "\n\n######################  Installing paho-mqtt  #####################\n"
+echo -e "\n\n######################  Installing paho-mqtt  #####################"
 echo -e "###################################################################\n"
 sudo -H pip install paho-mqtt
 
@@ -198,11 +198,11 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "-------------------  Installing Oracle JAVA  -------------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing Oracle Java  #####################\n"
+echo -e "\n\n######################  Installing Oracle Java  #####################"
 echo -e "#####################################################################\n"
 sudo $INSTALL_COMMAND oracle-java8-installer
 
-echo -e "\n\n######################  Installing Java Set-default #####################\n"
+echo -e "\n\n######################  Installing Java Set-default #####################"
 echo -e "#########################################################################\n"
 sudo $INSTALL_COMMAND oracle-java8-set-default
 
@@ -217,7 +217,7 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "---------------  Installing Compression Tools  -----------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing General Compression tools #####################\n"
+echo -e "\n\n######################  Installing General Compression tools #####################"
 echo -e "##################################################################################\n"
 sudo $INSTALL_COMMAND p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
 
@@ -228,11 +228,11 @@ echo -e "------------------  Installing HTTPS Addons  -------------------"
 echo -e "----------------------------------------------------------------"
 
 # Install Packages to allow apt to use a repository over HTTPS
-echo -e "\n\n######################  Installing apt-transport-https #####################\n"
+echo -e "\n\n######################  Installing apt-transport-https #####################"
 echo -e "############################################################################\n"
 sudo $INSTALL_COMMAND apt-transport-https
 
-echo -e "\n\n######################  Installing ca-certificates #####################\n"
+echo -e "\n\n######################  Installing ca-certificates #####################"
 echo -e "########################################################################\n"
 sudo $INSTALL_COMMAND ca-certificates
 
@@ -245,25 +245,25 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "------------------  Installing Tools & Soft  -------------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing dconf #####################\n"
+echo -e "\n\n######################  Installing dconf #####################"
 echo -e "##############################################################\n"
 sudo $INSTALL_COMMAND dconf-cli dconf-editor
 
-echo -e "\n\n######################  Installing KeePassX #####################\n"
+echo -e "\n\n######################  Installing KeePassX #####################"
 echo -e "#################################################################\n"
 sudo $INSTALL_COMMAND keepassx
 
-echo -e "\n\n######################  Installing DropBox #####################\n"
+echo -e "\n\n######################  Installing DropBox #####################"
 echo -e "################################################################\n"
 sudo $INSTALL_COMMAND dropbox
 
 
-echo -e "\n\n######################  Installing Krusader #####################\n"
+echo -e "\n\n######################  Installing Krusader #####################"
 echo -e "#################################################################\n"
 sudo $INSTALL_COMMAND krusader
 sudo $INSTALL_COMMAND krename
 
-echo -e "\n\n######################  Installing Gparted with dependencies #####################\n"
+echo -e "\n\n######################  Installing Gparted with dependencies #####################"
 echo -e "##################################################################################\n"
 sudo $INSTALL_COMMAND gparted
 sudo $INSTALL_COMMAND udftools
@@ -275,39 +275,39 @@ sudo $INSTALL_COMMAND nilfs-tools
 sudo $INSTALL_COMMAND exfat-utils exfat-fuse
 
 
-echo -e "\n\n######################  Installing HardInfo #####################\n"
+echo -e "\n\n######################  Installing HardInfo #####################"
 echo -e "#################################################################\n"
 sudo $INSTALL_COMMAND hardinfo
 
-echo -e "\n\n######################  Installing ScreenFetch #####################\n"
+echo -e "\n\n######################  Installing ScreenFetch #####################"
 echo -e "####################################################################\n"
 sudo $INSTALL_COMMAND screenfetch
 
-echo -e "\n\n######################  Installing Shutter #####################\n"
+echo -e "\n\n######################  Installing Shutter #####################"
 echo -e "################################################################\n"
 sudo $INSTALL_COMMAND shutter
 
-echo -e "\n\n######################  Installing SreenRuller #####################\n"
+echo -e "\n\n######################  Installing SreenRuller #####################"
 echo -e "####################################################################\n"
 sudo $INSTALL_COMMAND screenruler
 
-echo -e "\n\n######################  Installing Konsole #####################\n"
+echo -e "\n\n######################  Installing Konsole #####################"
 echo -e "################################################################\n"
 sudo $INSTALL_COMMAND konsole
 
-echo -e "\n\n######################  Installing Terminator #####################\n"
+echo -e "\n\n######################  Installing Terminator #####################"
 echo -e "###################################################################\n"
 sudo $INSTALL_COMMAND terminator
 
-echo -e "\n\n######################  Installing Lynx #####################\n"
+echo -e "\n\n######################  Installing Lynx #####################"
 echo -e "#############################################################\n"
 sudo $INSTALL_COMMAND lynx
 
-echo -e "\n\n######################  Installing indicator-weather #####################\n"
+echo -e "\n\n######################  Installing indicator-weather #####################"
 echo -e "##########################################################################\n"
 sudo $INSTALL_COMMAND indicator-weather
 
-echo -e "\n\n######################  Installing indicator-cpufreq #####################\n"
+echo -e "\n\n######################  Installing indicator-cpufreq #####################"
 echo -e "##########################################################################\n"
 sudo $INSTALL_COMMAND indicator-cpufreq
 
@@ -316,11 +316,11 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "------------------  Installing SAMBA share  ---_----------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing Samba #####################\n"
+echo -e "\n\n######################  Installing Samba #####################"
 echo -e "##############################################################\n"
 sudo $INSTALL_COMMAND samba samba-common python-dnspython
 
-echo -e "\n\n######################  WhereIs Samba #####################\n"
+echo -e "\n\n######################  WhereIs Samba #####################"
 echo -e "###########################################################\n"
 whereis samba
 
@@ -332,23 +332,23 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "-----------------  Installing Editors & IDEs  ------------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing Geany editor #####################\n"
+echo -e "\n\n######################  Installing Geany editor #####################"
 echo -e "#####################################################################\n"
 sudo $INSTALL_COMMAND geany
 
-echo -e "\n\n######################  Installing MC Editor #####################\n"
+echo -e "\n\n######################  Installing MC Editor #####################"
 echo -e "##################################################################\n"
 sudo $INSTALL_COMMAND mc
 
-echo -e "\n\n######################  Installing ATOM Editor #####################\n"
+echo -e "\n\n######################  Installing ATOM Editor #####################"
 echo -e "####################################################################\n"
 sudo $INSTALL_COMMAND atom
 
-echo -e "\n\n######################  Installing Brackets editor #####################\n"
+echo -e "\n\n######################  Installing Brackets editor #####################"
 echo -e "########################################################################\n"
 sudo $INSTALL_COMMAND brackets
 
-echo -e "\n\n######################  Installing Visual Code editor #####################\n"
+echo -e "\n\n######################  Installing Visual Code editor #####################"
 echo -e "###########################################################################\n"
 echo -e "-----------------  VS Curl Download  ------------------"
 # curl -L "https://go.microsoft.com/fwlink/?LinkID=760868" > vscode_package.deb
@@ -367,11 +367,11 @@ echo -e "-------------- Installing Snap package manager  ----------------"
 echo -e "----------------------------------------------------------------"
 
 # Database
-echo -e "\n\n######################  Installing SNAP #####################\n"
+echo -e "\n\n######################  Installing SNAP #####################"
 echo -e "#############################################################\n"
 sudo $INSTALL_COMMAND snapd
 
-echo -e "\n\n######################  Adding Snap PATH to bashrc  #####################\n"
+echo -e "\n\n######################  Adding Snap PATH to bashrc  #####################"
 echo -e "#########################################################################\n"
 echo -e 'export PATH="$PATH:/snap/bin"' >> ~/.bashrc
 
@@ -384,18 +384,18 @@ echo -e "-----------------  Installing DataBase Toosl  ------------------"
 echo -e "----------------------------------------------------------------"
 
 # Database
-echo -e "\n\n######################  Installing mysql-server #####################\n"
+echo -e "\n\n######################  Installing mysql-server #####################"
 echo -e "#####################################################################\n"
 sudo $INSTALL_COMMAND mysql-server
 
-echo -e "\n\n######################  Installing mysql-workbench #####################\n"
+echo -e "\n\n######################  Installing mysql-workbench #####################"
 echo -e "########################################################################\n"
 sudo $INSTALL_COMMAND mysql-workbench
 
 
 
 
-echo -e "\n\n######################  Installation cleanup 02  #####################\n"
+echo -e "\n\n######################  Installation cleanup 02  #####################"
 echo -e "######################################################################\n"
 sudo $PACK_MNG $SWITCH autoclean
 sudo $PACK_MNG $SWITCH clean
@@ -411,11 +411,11 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "------------  Installing Docker & Docker Compose  --------------"
 echo -e "----------------------------------------------------------------"
 
-echo -e "\n\n######################  Removing previous Docker Instllations  #####################\n"
+echo -e "\n\n######################  Removing previous Docker Instllations  #####################"
 echo -e "####################################################################################\n"
 sudo $PACK_MNG remove docker docker-engine docker.io
 
-echo -e "\n\n######################  Installing docker-ce docker-compose  #####################\n"
+echo -e "\n\n######################  Installing docker-ce docker-compose  #####################"
 echo -e "##################################################################################\n"
 sudo $INSTALL_COMMAND docker-ce docker-compose
 
@@ -426,15 +426,15 @@ echo -e "--------------------  Installing Browsers  ---------------------"
 echo -e "----------------------------------------------------------------"
 
 # Install Browsers
-echo -e "\n\n######################  Installing CHROMIUM #####################\n"
+echo -e "\n\n######################  Installing CHROMIUM #####################"
 echo -e "#################################################################\n"
 sudo $INSTALL_COMMAND chromium-browser
 
-echo -e "\n\n######################  Installing OPERA #####################\n"
+echo -e "\n\n######################  Installing OPERA #####################"
 echo -e "##############################################################\n"
 sudo $INSTALL_COMMAND opera
 
-echo -e "\n\n######################  Installing CHROME #####################\n"
+echo -e "\n\n######################  Installing CHROME #####################"
 echo -e "###############################################################\n"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
@@ -445,13 +445,13 @@ echo -e "\n\n-------------------------------------------------------------------
 echo -e "--------------------  Installing Skype, Viber, Slack  ---------------------"
 echo -e "---------------------------------------------------------------------------"
 
-echo -e "\n\n######################  Installing Skype #####################\n"
+echo -e "\n\n######################  Installing Skype #####################"
 echo -e "###############################################################\n"
 wget https://go.skype.com/skypeforlinux-64.deb -O skype_amd64.deb
 sudo dpkg -i skype_amd64.deb
 rm skype_amd64.deb
 
-echo -e "\n\n###################### Installing Slack #####################\n"
+echo -e "\n\n###################### Installing Slack #####################"
 echo -e "#############################################################\n"
 
 echo -e "\n\n----------------------  Generating Slack Download link  --------------------------"
@@ -466,7 +466,7 @@ sudo dpkg -i slack_amd64.deb
 rm slack_amd64.deb
 
 
-echo -e "\n\n######################  Installing Viber #####################\n"
+echo -e "\n\n######################  Installing Viber #####################"
 echo -e "##############################################################\n"
 echo -e "\n\n----------------------  Generating Viber Download link  --------------------------"
 VIBER_LINK=$(lynx --dump https://www.viber.com/download/ | grep viber.deb | sed 's/^.*http/http/')
@@ -506,7 +506,7 @@ echo -e "\n\n----------------------  Creating NODEjs lnk -----------------------
 sudo sudo ln -s $INSTALL_LOCATION/node_install/bin/node /usr/bin/nodejs
 sudo sudo ln -s $INSTALL_LOCATION/node_install/bin/node /usr/bin/node
 
-echo -e "-----  Check NODE path 7 version  ------"
+echo -e "\n-----  Check NODE path 7 version  ------"
 node -v
 nodejs -v
 npm -v
@@ -577,7 +577,7 @@ rm postman.tar.gz
 sudo ln -s $INSTALL_LOCATION/Postman/Postman /usr/bin/postman
 
 
-echo -e "\n\n----------------------  Installing Android Studio  -----------------------\n"
+echo -e "\n\n----------------------  Installing Android Studio  -----------------------"
 echo -e "--------------------------------------------------------------------------\n\n"
 
 echo -e "\n\n######################  Generating Android Studio Download link #####################\n"
@@ -594,7 +594,7 @@ sudo chown -R $LINUX_USER:$LINUX_USER $INSTALL_LOCATION/android*
 rm android_studio.zip
 
 
-echo -e "\n\n######################  CLI tool install #####################\n"
+echo -e "\n\n######################  CLI tool install #####################"
 echo -e "##############################################################\n"
 sudo $INSTALL_COMMAND dstat
 sudo $INSTALL_COMMAND vnstat
@@ -604,7 +604,7 @@ sudo $INSTALL_COMMAND htop
 
 
 echo -e "\n\n----------------------------------------------------------------"
-echo -e "------------------  Post-Installation Cleanup  ---------------------"
+echo -e "------------------  Post-Installation Cleanup  -----------------"
 echo -e "----------------------------------------------------------------\n\n"
 
 # Installation cleanup
@@ -613,3 +613,8 @@ sudo apt-get -y clean
 sudo apt-get -y autoremove
 sudo apt-get -y install -f
 sudo apt-get update --fix-missing
+
+
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "-------------------  Installation FINISHED  --------------------"
+echo -e "----------------------------------------------------------------\n\n"
