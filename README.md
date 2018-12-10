@@ -1,11 +1,16 @@
 # Linux Auto Install script
-Bash auto install script for configuring Linux OS after initial install.
+This is the bash auto install script that I use for configuring Linux OS after initial install.
 
 <br/><br/>
 
 ## Scripts Auto Install
 Following script is inspired by this contributor:
  - [erikdubois/Ultimate-Linux-Mint-18.3-Cinnamon](https://github.com/erikdubois/Ultimate-Linux-Mint-18.3-Cinnamon)
+
+ #### User interaction
+ User interaction is needed in two steps of initial script execution (within first several minutes):
+ - msttcorefonts install
+ - Java JDK install
 
 #### This script automation refers to:
 - automatic install of packages that you select
@@ -24,7 +29,7 @@ Fell free to configure this script as you see fit, and to suggest further improv
 
 ## Disclamer
 Prior to trying and running the script I suggest that you consult the script configuration.<br/>
-Review the software included & configuration as you see fit and to your preferences.
+Review the software included & configuration and check if it fit and to your preferences.
 
 By default, this script will do the following:
 - auto install additional repos
