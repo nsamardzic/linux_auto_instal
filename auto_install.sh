@@ -397,11 +397,11 @@ sudo $INSTALL_COMMAND mysql-workbench
 
 echo -e "\n\n######################  Installation cleanup 02  #####################"
 echo -e "######################################################################\n"
-sudo $PACK_MNG $SWITCH autoclean
-sudo $PACK_MNG $SWITCH clean
-sudo $PACK_MNG $SWITCH autoremove
-sudo $PACK_MNG $SWITCH install -f
-sudo $PACK_MNG update --fix-missing
+sudo apt-get -y autoclean
+sudo apt-get -y clean
+sudo apt-get -y autoremove
+sudo apt-get -y install -f
+sudo apt-get update --fix-missing
 
 
 
@@ -413,7 +413,7 @@ echo -e "----------------------------------------------------------------"
 
 echo -e "\n\n######################  Removing previous Docker Instllations  #####################"
 echo -e "####################################################################################\n"
-sudo $PACK_MNG remove docker docker-engine docker.io
+sudo apt-get remove docker docker-engine docker.io
 
 echo -e "\n\n######################  Installing docker-ce docker-compose  #####################"
 echo -e "##################################################################################\n"
