@@ -313,7 +313,7 @@ sudo $INSTALL_COMMAND indicator-cpufreq
 
 # Install Samba share
 echo -e "\n\n----------------------------------------------------------------"
-echo -e "------------------  Installing SAMBA share  ---_----------------"
+echo -e "------------------  Installing SAMBA share  --------------------"
 echo -e "----------------------------------------------------------------"
 
 echo -e "\n\n######################  Installing Samba #####################"

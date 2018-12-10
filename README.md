@@ -88,4 +88,9 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 ```
 
 
+## ToDo List
 
+- Integrate separate logging to standard and error output (stderr to stdout, tee)
+- Integrate [Dialog](http://linuxcommand.org/lc3_adv_dialog.php) for selecting distribution type
+- Make further improvements to make script more adaptable to other distros/package managers.
+- Follow up on given feedback :)
