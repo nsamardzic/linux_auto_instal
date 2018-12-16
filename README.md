@@ -29,7 +29,7 @@ Fell free to configure this script as you see fit, and to suggest further improv
 
 ## Disclamer
 Prior to trying and running the script I suggest that you consult the script configuration.<br/>
-Review the software included & configuration and check if it fit and to your preferences.
+Review the software included & configuration and check if it fit your needs.
 
 By default, this script will do the following:
 - auto install additional repos
