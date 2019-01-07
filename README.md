@@ -1,13 +1,26 @@
 # Linux Auto Install script
 This is the bash auto install script that I use for configuring Linux OS after initial install.
 
+There are two versions of this script:
+
+- auto_install.sh
+    - plain bash
+
+- auto_install_func.sh
+    - Function encapulated
+
+They are basically the same except that  ```auto_install_func.sh``` is based on function encapsulated calls for the install.
+
+Just add/comment out (remove) what you want.
+
+
 <br/><br/>
 
 ## Scripts Auto Install
 Following script is inspired by this contributor:
  - [erikdubois/Ultimate-Linux-Mint-18.3-Cinnamon](https://github.com/erikdubois/Ultimate-Linux-Mint-18.3-Cinnamon)
 
- #### User interaction
+#### User interaction
  User interaction is needed in two steps of initial script execution (within first several minutes):
  - msttcorefonts install
  - Java JDK install
@@ -23,7 +36,7 @@ This script is tested in following distributions:
 - mint 18.04 x64
 
 
-Fell free to configure this script as you see fit, and to suggest further improvements and modification. 
+Fell free to configure this script as you see fit, and to suggest further improvements and modification.
 
 <br/><br/>
 

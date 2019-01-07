@@ -145,6 +145,39 @@ echo -e "#####################################################################\n
 sudo $INSTALL_COMMAND python3-pip
 pip3 -V
 
+echo -e "\n\n######################  Installing Lynx #####################"
+echo -e "#############################################################\n"
+sudo $INSTALL_COMMAND lynx
+
+echo -e "\n\n########################  Installing yarn  ##########################"
+echo -e "#####################################################################\n"
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update
+sudo $INSTALL_COMMAND yarn
+
+
+
+# Install Oracle Java
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "-------------------  Installing Oracle JAVA  -------------------"
+echo -e "----------------------------------------------------------------"
+
+echo -e "\n\n######################  Installing Oracle Java  #####################"
+echo -e "#####################################################################\n"
+sudo $INSTALL_COMMAND oracle-java8-installer
+
+echo -e "\n\n######################  Installing Java Set-default #####################"
+echo -e "#########################################################################\n"
+sudo $INSTALL_COMMAND oracle-java8-set-default
+
+echo -e "\n-------------------  Java version details -------------------"
+java -version
+which java
+
+
+
+
 # Multimedia
 echo -e "\n\n----------------------------------------------------------------"
 echo -e "----------------  Installing Multimedia tools  -----------------"
@@ -177,6 +210,17 @@ echo -e "\n\n######################  Installing SMPlayer  #####################"
 echo -e "##################################################################\n"
 sudo $INSTALL_COMMAND smplayer
 
+echo -e "\n\n#####################  Installing Audacious  #####################"
+echo -e "##################################################################\n"
+sudo $INSTALL_COMMAND audacious
+sudo $INSTALL_COMMAND audacious-plugins
+
+echo -e "\n\n######################  Installing Audacity  #####################"
+echo -e "##################################################################\n"
+sudo $INSTALL_COMMAND audacity
+sudo $INSTALL_COMMAND audacity-data
+
+
 
 
 # MQTT tools
@@ -193,25 +237,6 @@ sudo -H pip install paho-mqtt
 
 
 
-# Install Oracle Java
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "-------------------  Installing Oracle JAVA  -------------------"
-echo -e "----------------------------------------------------------------"
-
-echo -e "\n\n######################  Installing Oracle Java  #####################"
-echo -e "#####################################################################\n"
-sudo $INSTALL_COMMAND oracle-java8-installer
-
-echo -e "\n\n######################  Installing Java Set-default #####################"
-echo -e "#########################################################################\n"
-sudo $INSTALL_COMMAND oracle-java8-set-default
-
-echo -e "\n-------------------  Java version details -------------------"
-java -version
-which java
-
-
-
 
 echo -e "\n\n----------------------------------------------------------------"
 echo -e "---------------  Installing Compression Tools  -----------------"
@@ -220,6 +245,7 @@ echo -e "----------------------------------------------------------------"
 echo -e "\n\n######################  Installing General Compression tools #####################"
 echo -e "##################################################################################\n"
 sudo $INSTALL_COMMAND p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller
+
 
 
 
@@ -299,10 +325,6 @@ echo -e "\n\n######################  Installing Terminator #####################
 echo -e "###################################################################\n"
 sudo $INSTALL_COMMAND terminator
 
-echo -e "\n\n######################  Installing Lynx #####################"
-echo -e "#############################################################\n"
-sudo $INSTALL_COMMAND lynx
-
 echo -e "\n\n######################  Installing indicator-weather #####################"
 echo -e "##########################################################################\n"
 sudo $INSTALL_COMMAND indicator-weather
@@ -310,6 +332,17 @@ sudo $INSTALL_COMMAND indicator-weather
 echo -e "\n\n######################  Installing indicator-cpufreq #####################"
 echo -e "##########################################################################\n"
 sudo $INSTALL_COMMAND indicator-cpufreq
+
+echo -e "\n\n###########################  Installing synapse ##########################"
+echo -e "##########################################################################\n"
+sudo $INSTALL_COMMAND synapse
+
+echo -e "\n\n#########################  Installing SpeedCrunch ########################"
+echo -e "##########################################################################\n"
+sudo $INSTALL_COMMAND speedcrunch
+
+
+
 
 # Install Samba share
 echo -e "\n\n----------------------------------------------------------------"
@@ -352,14 +385,16 @@ echo -e "\n\n######################  Installing Visual Code editor #############
 echo -e "###########################################################################\n"
 echo -e "-----------------  VS Curl Download  ------------------"
 # curl -L "https://go.microsoft.com/fwlink/?LinkID=760868" > vscode_package.deb
-
 echo -e "-----------------  VS wget Download  ------------------"
 wget -r -l1 --no-parent --no-directories -e robots=off '*amd64.deb' https://go.microsoft.com/fwlink/?LinkID=760868
 mv index.html* vscode_package.deb
-
 sudo dpkg -i vscode_package.deb
 rm vscode_package.deb
 
+
+echo -e "\n\n#################  Installing Sublime-text Editor ################"
+echo -e "##################################################################\n"
+sudo $INSTALL_COMMAND sublime-text 
 
 
 echo -e "\n\n----------------------------------------------------------------"
@@ -391,6 +426,19 @@ sudo $INSTALL_COMMAND mysql-server
 echo -e "\n\n######################  Installing mysql-workbench #####################"
 echo -e "########################################################################\n"
 sudo $INSTALL_COMMAND mysql-workbench
+
+
+echo -e "\n\n######################  Installing MELD compare #####################"
+echo -e "#####################################################################\n"
+sudo $INSTALL_COMMAND meld
+
+
+echo -e "\n\n######################  Installing Arduino #####################"
+echo -e "#####################################################################\n"
+sudo $INSTALL_COMMAND arduino-core
+sudo $INSTALL_COMMAND arduino
+sudo $INSTALL_COMMAND librxtx-java libjna-java
+sudo adduser $LINUX_USER dialout
 
 
 
@@ -559,6 +607,65 @@ rm VirtualBox.deb
 
 
 
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "--------------------  Developement tools  ----------------------"
+echo -e "----------------------------------------------------------------\n\n"
+
+echo -e "\n\n######################  Installing MELD compare #####################"
+echo -e "#####################################################################\n"
+sudo $INSTALL_COMMAND meld
+
+echo -e "\n\n#########################  Installing zeal ##########################"
+echo -e "#####################################################################\n"
+sudo $INSTALL_COMMAND zeal
+
+echo -e "\n\n########################  QT5 install ########################"
+echo -e "##############################################################\n"
+sudo $INSTALL_COMMAND python3-pyqt5.qtwebkit
+sudo $INSTALL_COMMAND mesa-common-dev
+sudo $INSTALL_COMMAND libglu1-mesa-dev
+sudo $INSTALL_COMMAND libfontconfig1
+sudo pip install PyQt5
+
+
+echo  "\n\n###################  Installing Remarkable ###################"
+echo  "##############################################################\n"
+echo  "\n\n----------------------  Generating Remarkable Download link  --------------------------"
+REMARKABLE_LINK=$(lynx --dump https://remarkableapp.github.io/linux/download.html | grep all.deb | sed 's/^.*http/http/')
+echo $REMARKABLE_LINK
+echo -e "\n\n----------------------  Downloading Remarkable  --------------------------"
+wget $REMARKABLE_LINK -O remarkable.deb
+echo -e "\n\n----------------------  Installing Remarkable package  --------------------------"
+sudo dpkg -i remarkable.deb
+rm remarkable.deb
+
+echo -e "\n\n#########################  Retext Markdown ##########################"
+echo -e "#####################################################################\n"
+sudo $INSTALL_COMMAND retext
+
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "---------------------  ZSH and Oh-My-Zsh  ----------------------"
+echo -e "----------------------------------------------------------------\n\n"
+
+echo -e "\n\n################  ZSH and Oh-My-Zsh Install ##################"
+echo -e "##############################################################\n"
+apt-get install -y zsh git-core
+apt-get install -y zsh-syntax-highlighting
+apt-get install -y zsh-theme-powerlevel9k
+apt-get install -y powerline fonts-powerline
+zsh --version
+which zsh
+whereis zsh
+sudo usermod -s /usr/bin/zsh $(whoami)
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc
+echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+
+
+
+
+
+
 # Postman
 echo -e "\n\n----------------------------------------------------------------"
 echo -e "----------------------  Installing IDEs  -----------------------"
@@ -575,6 +682,8 @@ sudo chown -R $LINUX_USER:$LINUX_USER $INSTALL_LOCATION/Post*
 
 rm postman.tar.gz
 sudo ln -s $INSTALL_LOCATION/Postman/Postman /usr/bin/postman
+
+
 
 
 echo -e "\n\n----------------------  Installing Android Studio  -----------------------"
@@ -594,11 +703,15 @@ sudo chown -R $LINUX_USER:$LINUX_USER $INSTALL_LOCATION/android*
 rm android_studio.zip
 
 
+
+
 echo -e "\n\n######################  CLI tool install #####################"
 echo -e "##############################################################\n"
 sudo $INSTALL_COMMAND dstat
 sudo $INSTALL_COMMAND vnstat
 sudo $INSTALL_COMMAND htop
+sudo $INSTALL_COMMAND mycli
+
 
 
 
