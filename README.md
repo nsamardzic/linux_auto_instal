@@ -15,10 +15,11 @@ Following script is inspired by this contributor:
 <br/>
 
 #### User interaction
- User interaction is needed in two steps of initial script execution (within first several minutes):
+ User interaction is needed in 3 steps of initial script execution (within first several minutes):
  
  - Java JDK install
  - msttcorefonts install
+ - Opera browser
 
 <br/>
 
@@ -29,6 +30,7 @@ Following script is inspired by this contributor:
 - script local variables to help with script customization
 
 <br/>
+
 #### Testing
 This script is tested in following distributions:
 

@@ -223,7 +223,6 @@ openssl_install(){
 }
 
 
-
 # Installing yarn
 yarn_install(){
 	echo -e "\n\n########################  Installing yarn  ##########################"
@@ -278,6 +277,81 @@ java_install(){
 
 
 
+
+
+
+
+
+# "--------------------  Installing Microsoft TT core fonts  ---------------------"
+
+# Installing Microsoft core fonts
+msttcorefonts_install(){
+	echo -e "\n\n######################  Installing Microsoft core fonts  #####################"
+	echo -e "##############################################################################\n"
+	sudo $INSTALL_COMMAND msttcorefonts
+}
+
+
+
+
+
+
+
+
+
+# "--------------------  Installing Browsers  ---------------------"
+
+# Installing OPERA
+opera_install(){
+	echo -e "\n\n######################  Installing OPERA #####################"
+	echo -e "##############################################################\n"
+
+	echo -e "\n\n######################  OPERA apt repo  #####################\n"
+	wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+	sudo add-apt-repository "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
+	update_repositories
+
+	sudo $INSTALL_COMMAND opera-stable
+	
+	log_header
+	echo  "************************* OPERA Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s opera-stable | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME	
+}
+
+
+# Installing CHROMIUM
+chromium_install(){
+	installation_cleanup
+	echo -e "\n\n######################  Installing CHROMIUM #####################"
+	echo -e "#################################################################\n"
+	sudo $INSTALL_COMMAND chromium-browser
+
+	log_header
+	echo  "************************* CHROMIUM-browser Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s chromium-browser | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
+}
+
+
+# Installing CHROME
+chrome_install(){
+	echo -e "\n\n######################  Installing CHROME #####################"
+	echo -e "###############################################################\n"
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo dpkg -i google-chrome-stable_current_amd64.deb
+	rm google-chrome-stable_current_amd64.deb
+	
+	log_header
+	echo  "************************* CHROME Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s google-chrome-stable | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
+}
+
+
+
+
+
+
+
+
 # "----------------  Installing Multimedia tools  -----------------"
 
 # Installing ubuntu-restricted-extras
@@ -292,12 +366,7 @@ ubuntu_restricted_extras_install(){
 }
 
 
-# Installing Microsoft core fonts
-msttcorefonts_install(){
-	echo -e "\n\n######################  Installing Microsoft core fonts  #####################"
-	echo -e "##############################################################################\n"
-	sudo $INSTALL_COMMAND msttcorefonts
-}
+
 
 
 # Installing flashplugin-installer
@@ -861,6 +930,7 @@ remarkable_install(){
 
 # Installing docker-ce docker-compose
 docker_install(){
+	installation_cleanup
 	echo -e "\n\n######################  DOCKER apt repo  #####################\n"
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
@@ -1000,49 +1070,6 @@ arduino_install(){
 
 
 
-# "--------------------  Installing Browsers  ---------------------"
-
-# Installing CHROMIUM
-chromium_install(){
-	echo -e "\n\n######################  Installing CHROMIUM #####################"
-	echo -e "#################################################################\n"
-	sudo $INSTALL_COMMAND chromium-browser
-
-	log_header
-	echo  "************************* CHROMIUM-browser Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s chromium-browser | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-}
-
-
-# Installing OPERA
-opera_install(){
-	echo -e "\n\n######################  Installing OPERA #####################"
-	echo -e "##############################################################\n"
-	sudo $INSTALL_COMMAND opera
-	
-	log_header
-	echo  "************************* OPERA Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s opera | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-}
-
-
-# Installing CHROME
-chrome_install(){
-	echo -e "\n\n######################  Installing CHROME #####################"
-	echo -e "###############################################################\n"
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-	sudo dpkg -i google-chrome-stable_current_amd64.deb
-	rm google-chrome-stable_current_amd64.deb
-	
-	log_header
-	echo  "************************* CHROME Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s google-chrome-stable | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-}
-
-
-
-
-
 
 
 
@@ -1081,7 +1108,7 @@ slack_install(){
 
 	log_header
 	echo  "************************* Slack Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s slack | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
+	sudo dpkg -s slack-desktop | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
 }
 
 
@@ -1236,7 +1263,7 @@ qt5_install(){
 	sudo pip install PyQt5
 	
 	log_header
-	echo  "************************* Install status *************************" >> $LOG_FILE_NAME
+	echo  "************************* QT5 Install status *************************" >> $LOG_FILE_NAME
 	pip show PyQt5 >> $LOG_FILE_NAME
 }
 
@@ -1306,10 +1333,19 @@ java_install
 
 
 echo -e "\n\n----------------------------------------------------------------"
-echo -e "--------------  Installing Microsoft core fonts  ---------------"
+echo -e "--------------  Installing Microsoft TT core fonts  ---------------"
 echo -e "----------------------------------------------------------------"
 msttcorefonts_install
 
+
+
+
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "--------------------  Installing Browsers  ---------------------"
+echo -e "----------------------------------------------------------------"
+opera_install
+chromium_install
+chrome_install
 
 
 
@@ -1436,16 +1472,6 @@ postman_install
 android_install
 node_install
 arduino_install
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "--------------------  Installing Browsers  ---------------------"
-echo -e "----------------------------------------------------------------"
-chromium_install
-opera_install
-chrome_install
-
 
 
 
