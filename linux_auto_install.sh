@@ -37,7 +37,7 @@ INSTALL_LOCATION=~/Applications
 # Defines which package manager/install command/switches for the package installation
 INSTALL_COMMAND='apt-get install -y'
 
-# Defines which package manager/install command/switches for the package installation
+# Defines log file name for implemented loging per function call
 LOG_FILE_NAME=Install_log.txt
 
 
@@ -853,15 +853,6 @@ remarkable_install(){
 	sudo dpkg -s remarkable | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
 }
 
-retext_install(){
-	echo -e "\n\n#########################  Retext Markdown ##########################"
-	echo -e "#####################################################################\n"
-	sudo $INSTALL_COMMAND retext
-
-	log_header
-	echo  "************************* Retext Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s retext | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-}
 
 
 
@@ -1426,7 +1417,7 @@ meld_install
 zeal_install
 qt5_install
 remarkable_install
-retext_install
+
 
 
 
