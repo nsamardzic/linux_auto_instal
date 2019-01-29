@@ -891,6 +891,18 @@ meld_install(){
 	sudo dpkg -s meld | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
 }
 
+# Installing APT-FILE compare
+apt_file_install(){
+	echo -e "\n\n######################  Installing APT-FILE #####################"
+	echo -e "#####################################################################\n"
+	sudo $INSTALL_COMMAND apt-file
+    apt-file update
+
+	log_header
+	echo  "************************* APT-FILE Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s apt-file | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
+}
+
 
 # Installing Zeal - offline documentation viewer
 zeal_install(){
@@ -1450,6 +1462,7 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "---------------  Additional Developement Tools  ----------------"
 echo -e "----------------------------------------------------------------"
 meld_install
+apt_file_install
 zeal_install
 qt5_install
 remarkable_install
