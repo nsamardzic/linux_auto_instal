@@ -104,35 +104,6 @@ log_header(){
 
 
 
-# "------------------------  Python3 Install ---------------------------"
-
-# Python3install
-python3_install(){
-	echo -e "\n\n#####################  Python3 Install #######################"
-	echo -e "##############################################################\n"
-
-	sudo $INSTALL_COMMAND python3.7 python3.7-doc python3.7-dbg
-  sudo $INSTALL_COMMAND python3.7-venv python3.7-examples
-
-
-
-	echo -e "\n\n####################  Adding Python3 Alias to bashrc  ####################"
-	echo -e "#########################################################################\n"
-	echo -e "alias python='/usr/bin/python3.7'" >> ~/.bashrc
-
-	echo -e "\n\n############################  Reload bashrc  ############################"
-	echo -e "#########################################################################\n"
-	source ~/.bashrc
-
-
-	log_header
-	echo  "************************* Python3 Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s python3.7 | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-	python --version >> $LOG_FILE_NAME
-	which python >> $LOG_FILE_NAME
-}
-
-
 
 
 
@@ -161,6 +132,20 @@ pip3_install(){
 
 
 
+# Installing Paho_MQTT Tools
+paho_mqtt_install(){
+	echo -e "\n\n######################  Installing Paho-mqtt  #####################"
+	echo -e "###################################################################\n"
+	sudo pip install paho-mqtt
+
+	log_header
+	echo  "************************* Paho-mqtt Install status *************************" >> $LOG_FILE_NAME
+	sudo pip show paho-mqtt >> $LOG_FILE_NAME
+}
+
+
+
+
 
 # "------------------------  QT5 Install  ---------------------------"
 
@@ -182,16 +167,6 @@ qt5_install(){
 
 
 
-# Installing Paho_MQTT Tools
-paho_mqtt_install(){
-	echo -e "\n\n######################  Installing Paho-mqtt  #####################"
-	echo -e "###################################################################\n"
-	sudo pip install paho-mqtt
-
-	log_header
-	echo  "************************* Paho-mqtt Install status *************************" >> $LOG_FILE_NAME
-	sudo pip show paho-mqtt >> $LOG_FILE_NAME
-}
 
 
 
@@ -238,11 +213,6 @@ installation_cleanup
 
 
 
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "---------------------  Python3_install  ------------------------"
-echo -e "----------------------------------------------------------------"
-python3_install
 
 
 echo -e "\n\n----------------------------------------------------------------"
