@@ -103,36 +103,6 @@ log_header(){
 
 
 
-# "------------------------  ZSH and Oh-My-Zsh Install ---------------------------"
-
-# ZSH install
-zsh_install(){
-	echo -e "\n\n################  ZSH and Oh-My-Zsh Install ##################"
-	echo -e "##############################################################\n"
-
-	sudo $INSTALL_COMMAND zsh git-core
-	sudo $INSTALL_COMMAND zsh-syntax-highlighting
-	sudo $INSTALL_COMMAND zsh-theme-powerlevel9k
-	sudo $INSTALL_COMMAND powerline fonts-powerline
-
-	zsh --version
-	which zsh
-	whereis zsh
-
-	sudo usermod -s /usr/bin/zsh $(whoami)
-
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-	echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc
-	echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
-
-	log_header
-	echo  "************************* ZSH Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s zsh | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-	zsh --version >> $LOG_FILE_NAME
-	which zsh >> $LOG_FILE_NAME
-	whereis zsh >> $LOG_FILE_NAME
-}
-
 
 # "------------------------  Python3 Install ---------------------------"
 
@@ -148,7 +118,7 @@ python3_install(){
 
 	echo -e "\n\n####################  Adding Python3 Alias to bashrc  ####################"
 	echo -e "#########################################################################\n"
-	echo -e "alias python3='/usr/bin/python3.7'" >> ~/.bashrc
+	echo -e "alias python='/usr/bin/python3.7'" >> ~/.bashrc
 
 	echo -e "\n\n############################  Reload bashrc  ############################"
 	echo -e "#########################################################################\n"
@@ -212,6 +182,16 @@ qt5_install(){
 
 
 
+# Installing Paho_MQTT Tools
+paho_mqtt_install(){
+	echo -e "\n\n######################  Installing Paho-mqtt  #####################"
+	echo -e "###################################################################\n"
+	sudo pip install paho-mqtt
+
+	log_header
+	echo  "************************* Paho-mqtt Install status *************************" >> $LOG_FILE_NAME
+	sudo pip show paho-mqtt >> $LOG_FILE_NAME
+}
 
 
 
@@ -269,6 +249,12 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "-----------------------  pip3 tools  ---------------------------"
 echo -e "----------------------------------------------------------------"
 pip3_install
+
+
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "---------------------  Paho-MQTT tools  ------------------------"
+echo -e "----------------------------------------------------------------"
+paho_mqtt_install
 
 
 echo -e "\n\n----------------------------------------------------------------"

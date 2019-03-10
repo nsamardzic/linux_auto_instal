@@ -191,16 +191,6 @@ mqtt_install(){
 	sudo dpkg -s mosquitto | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
 }
 
-# Installing paho-mqtt
-paho_mqtt_install(){
-	echo -e "\n\n######################  Installing Paho-mqtt  #####################"
-	echo -e "###################################################################\n"
-	sudo -H pip install paho-mqtt
-
-	log_header
-	echo  "************************* Paho-mqtt Install status *************************" >> $LOG_FILE_NAME
-	sudo pip show paho-mqtt >> $LOG_FILE_NAME
-}
 
 
 
@@ -548,30 +538,6 @@ slack_install(){
 
 
 
-# "----------------------  VirtualBox setup  ----------------------"
-
-# Installing VirtualBox & Extension Pack
-virtualbox_install(){
-	echo -e "\n\n######################  Generating VirtualBox Download link #####################\n"
-	VIRTUALBOX_LINK=$(lynx --dump https://www.virtualbox.org/wiki/Linux_Downloads | grep -w bionic_amd64.deb | sed 's/^.*http/http/')
-	echo -e $VIRTUALBOX_LINK
-
-	echo -e "\n\n###############  Generating VirtualBox Extension Pack Download link ###################\n"
-	VIRTUALBOX_EXTENSION_LINK=$(lynx --dump https://www.virtualbox.org/wiki/Downloads | grep -w vbox-extpack | sed 's/^.*http/http/')
-	echo -e $VIRTUALBOX_EXTENSION_LINK
-
-	echo -e "\n\n####################  Downloading VirtualBox & Extension Pack #####################\n"
-	wget $VIRTUALBOX_LINK -O VirtualBox.deb
-	wget $VIRTUALBOX_EXTENSION_LINK -O Oracle_VM_VirtualBox_Extension_Pack.vbox-extpack
-
-	echo -e "\n\n####################  Installing VirtualBox & Extension Pack #####################\n"
-	sudo dpkg -i VirtualBox.deb
-	rm VirtualBox.deb
-
-	log_header
-	echo  "************************* VirtualBox Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s virtualbox | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-}
 
 
 
@@ -665,7 +631,6 @@ echo -e "\n\n----------------------------------------------------------------"
 echo -e "------------------  Installing MQTT Tools  --------------------"
 echo -e "----------------------------------------------------------------"
 mqtt_install
-paho_mqtt_install
 
 
 
@@ -747,13 +712,6 @@ echo -e "---------------------------  Installing Slack  ------------------------
 echo -e "---------------------------------------------------------------------------"
 slack_install
 
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "----------------------  VirtualBox setup  ----------------------"
-echo -e "----------------------------------------------------------------"
-virtualbox_install
 
 
 
