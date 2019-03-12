@@ -91,7 +91,6 @@ installation_cleanup(){
 
 
 log_header(){
-
 	echo >> $LOG_FILE_NAME
 	echo >> $LOG_FILE_NAME
 	echo "Installed on:   $(date)" >> $LOG_FILE_NAME
@@ -103,35 +102,50 @@ log_header(){
 
 
 
-# "------------------------  ZSH and Oh-My-Zsh Install ---------------------------"
 
-# ZSH install
-zsh_install(){
-	echo -e "\n\n################  ZSH and Oh-My-Zsh Install ##################"
+
+
+
+
+# "----------------------  Installing  Viber  ------------------------"
+
+# Installing Viber
+viber_install(){
+	echo -e "\n\n######################  Installing Viber #####################"
 	echo -e "##############################################################\n"
 
-	sudo $INSTALL_COMMAND zsh git-core
-	sudo $INSTALL_COMMAND zsh-syntax-highlighting
-	sudo $INSTALL_COMMAND zsh-theme-powerlevel9k
-	sudo $INSTALL_COMMAND powerline fonts-powerline
+	echo -e "\n\n----------------------  Generating Viber Download link  --------------------------"
+	VIBER_LINK=$(lynx --dump https://www.viber.com/download/ | grep viber.deb | sed 's/^.*http/http/')
+	echo -e $VIBER_LINK
+	echo -e "\n\n----------------------  Downloading Viber  --------------------------"
+	wget $VIBER_LINK -O $INSTALL_LOCATION/viber_original.deb
 
-	zsh --version
-	which zsh
-	whereis zsh
+	echo -e "\n\n----------------------  Handling Dependency problem --------------------------"
+	echo -e "..... Please Wait\n"
+	cd $INSTALL_LOCATION/
+	dpkg-deb -x viber_original.deb viber
+	dpkg-deb --control viber_original.deb viber/DEBIAN
+	sed -i 's/libcurl3/libcurl4/' $INSTALL_LOCATION/viber/DEBIAN/control
 
-	sudo usermod -s /usr/bin/zsh $(whoami)
+	echo -e "\n\n----------------------  Generating new Viber.deb --------------------------"
+	echo -e "..... Please be patient - this can take a while..\n"
+	dpkg -b viber viber.deb
 
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-	echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc
-	echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+	echo -e "\n\n----------------------  Installing Viber package  --------------------------"
+	sudo dpkg -i viber.deb
+
+	echo -e "\n\n----------------------  Viber install cleanup  --------------------------"
+	rm viber.deb viber_original.deb
+	rm -R viber
+
+	# echo -e "\n\n----------------------  Handling Scaling problem --------------------------"
+	# sed -i 's/Exec=/Exec=env QT_SCALE_FACTOR=0.6 /' /usr/share/applications//viber.desktop
 
 	log_header
-	echo  "************************* ZSH Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s zsh | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-	zsh --version >> $LOG_FILE_NAME
-	which zsh >> $LOG_FILE_NAME
-	whereis zsh >> $LOG_FILE_NAME
+	echo  "************************* Viber Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s viber | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
 }
+
 
 
 
@@ -169,9 +183,9 @@ installation_cleanup
 
 
 echo -e "\n\n----------------------------------------------------------------"
-echo -e "------------------------  ZSH tools  ---------------------------"
+echo -e "----------------------  Viber Install  -------------------------"
 echo -e "----------------------------------------------------------------"
-zsh_install
+viber_install
 
 
 

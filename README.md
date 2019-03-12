@@ -14,9 +14,24 @@ Following script is inspired by this contributor:
  - [erikdubois/Ultimate-Linux-Mint-18.3-Cinnamon](https://github.com/erikdubois/Ultimate-Linux-Mint-18.3-Cinnamon)
 <br/>
 
+## Auto Install scripts details
+ This section explains in more details what each specific script contains (package types):
+
+ - basic_auto_install.sh - (generic packages typical for evry install)
+ - developement_auto_install.sh - (packages intended for developement - editors & IDE's)
+ - main_linux_auto_install.sh - (All packages)
+ - python01_env_autoinstall.sh - (python envinronment setup - pip, PyQt)
+ - python02_env_autoinstall.sh - (second part of python setup)
+ - viber_auto_install.sh - (viber auto install)
+ - zsh_auto_install.sh - (zhs auto install)
+
+
+
+
+
 #### User interaction
  User interaction is needed in 3 steps of initial script execution (within first several minutes):
- 
+
  - Java JDK install
  - msttcorefonts install
  - Opera browser

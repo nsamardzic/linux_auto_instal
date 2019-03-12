@@ -91,7 +91,6 @@ installation_cleanup(){
 
 
 log_header(){
-
 	echo >> $LOG_FILE_NAME
 	echo >> $LOG_FILE_NAME
 	echo "Installed on:   $(date)" >> $LOG_FILE_NAME
@@ -103,34 +102,17 @@ log_header(){
 
 
 
-# "------------------------  ZSH and Oh-My-Zsh Install ---------------------------"
 
-# ZSH install
-zsh_install(){
-	echo -e "\n\n################  ZSH and Oh-My-Zsh Install ##################"
-	echo -e "##############################################################\n"
 
-	sudo $INSTALL_COMMAND zsh git-core
-	sudo $INSTALL_COMMAND zsh-syntax-highlighting
-	sudo $INSTALL_COMMAND zsh-theme-powerlevel9k
-	sudo $INSTALL_COMMAND powerline fonts-powerline
 
-	zsh --version
-	which zsh
-	whereis zsh
 
-	sudo usermod -s /usr/bin/zsh $(whoami)
 
-	wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-	echo "source /usr/share/powerlevel9k/powerlevel9k.zsh-theme" >> ~/.zshrc
-	echo "source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+# "----------------------  Viber Scaling  ------------------------"
 
-	log_header
-	echo  "************************* ZSH Install status *************************" >> $LOG_FILE_NAME
-	sudo dpkg -s zsh | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
-	zsh --version >> $LOG_FILE_NAME
-	which zsh >> $LOG_FILE_NAME
-	whereis zsh >> $LOG_FILE_NAME
+# Installing Viber
+viber_scale(){
+	echo -e "\n\n----------------------  Handling Scaling problem --------------------------"
+	sed -i 's/Exec=/Exec=env QT_SCALE_FACTOR=0.6 /' /usr/share/applications//viber.desktop
 }
 
 
@@ -139,49 +121,10 @@ zsh_install(){
 
 
 
-
-
-
-
-
 echo -e "\n\n----------------------------------------------------------------"
-echo -e "-------------------  Updating Repositories  --------------------"
+echo -e "------------------------ Viber Scale  --------------------------"
 echo -e "----------------------------------------------------------------"
-update_repositories
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "----------------------  Packages Upgrade  ----------------------"
-echo -e "----------------------------------------------------------------"
-# upgrade_packages
-
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "--------------------  Installation cleanup  --------------------"
-echo -e "----------------------------------------------------------------"
-installation_cleanup
-
-
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "------------------------  ZSH tools  ---------------------------"
-echo -e "----------------------------------------------------------------"
-zsh_install
-
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
-echo -e "--------------------  Installation cleanup  --------------------"
-echo -e "----------------------------------------------------------------"
-installation_cleanup
-
-
+viber_scale
 
 
 
