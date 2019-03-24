@@ -517,6 +517,19 @@ terminator_install(){
 }
 
 
+# Installing LXterminal 
+lxterminal_install(){
+	echo -e "\n\n######################  Installing LXterminal #####################"
+	echo -e "###################################################################\n"
+	sudo $INSTALL_COMMAND lxterminal
+
+	log_header
+	echo  "************************* LXterminal Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s lxterminal | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
+}
+
+
+
 # Installing indicator-weather
 indicator_weather_install(){
 	echo -e "\n\n######################  Weather Indicator via PPA  #####################\n"
@@ -564,6 +577,19 @@ libreoffice_install(){
 	sudo add-apt-repository -y ppa:libreoffice/ppa
 	update_repositories
 }
+
+
+# Installing AbiWord 
+abiword_install(){
+	echo -e "\n\n########################  Installing AbiWord #######################"
+	echo -e "###################################################################\n"
+	sudo $INSTALL_COMMAND abiword abiword-common abiword-plugin-grammar
+
+	log_header
+	echo  "************************* LXterminal Install status *************************" >> $LOG_FILE_NAME
+	sudo dpkg -s abiword | grep -Ei 'Package|Version|Status' >> $LOG_FILE_NAME
+}
+
 
 # Installing synapse
 synapse_install(){
@@ -721,19 +747,19 @@ msttcorefonts_install
 
 
 echo -e "\n\n----------------------------------------------------------------"
-echo -e "-------------------  Installing Wallpapers  --------------------"
-echo -e "----------------------------------------------------------------"
-ubuntu_wallpapers_install
-mint_wallpapers_install
-
-
-
-echo -e "\n\n----------------------------------------------------------------"
 echo -e "--------------------  Installing Browsers  ---------------------"
 echo -e "----------------------------------------------------------------"
 opera_install
 chromium_install
 chrome_install
+
+
+
+echo -e "\n\n----------------------------------------------------------------"
+echo -e "-------------------  Installing Wallpapers  --------------------"
+echo -e "----------------------------------------------------------------"
+ubuntu_wallpapers_install
+mint_wallpapers_install
 
 
 
@@ -767,11 +793,13 @@ shutter_install
 sreenRuller_install
 konsole_install
 terminator_install
+lxterminal_install
 indicator_weather_install
 indicator_cpufre_install
 
 samba_install
 libreoffice_install
+abiword_install
 synapse_install
 speedcrunch_install
 geany_install
